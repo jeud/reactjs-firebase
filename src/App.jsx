@@ -1,12 +1,5 @@
 import React from 'react'
-
-class HelloWorld extends React.Component {
-    render() {
-        return <div>
-            <p>Hello World</p>
-        </div>
-    }
-}
+import HelloWorld from './HelloWorld.jsx'
 
 class App extends React.Component {
     state = {
