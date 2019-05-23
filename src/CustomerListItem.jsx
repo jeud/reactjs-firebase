@@ -8,9 +8,8 @@ export default function CustomerListItem(props) {
     const gender = each.gender ? male : female
 
     return <div>
-        return <div>
-            <img src={each.gender == 'M' ? male : female} alt="" />
-            <img src={gender} alt="" />
-        </div>
+        <p>{each.first_name}</p>
+        <img src={gender} alt="" />
+        <button onClick={() => props.yyy(each.id)}>Select {each.id}</button>
     </div>
 }
