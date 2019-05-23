@@ -3,11 +3,13 @@ import users from './users.json'
 
 export default function UserList() {
     return <div>
-        {users.map(each => {
-            return <div key={each.id}>
-                <p>{each.name}</p>
-                <p>{each.username}</p>
-            </div>
-        })}
+        <table border="1">
+            {users.map(each => {
+                return <tr key={each.id}>
+                    <td>{each.name}</td>
+                    <td>{each.username}</td>
+                </tr>
+            })}
+        </table>
     </div>
 }
