@@ -1,5 +1,6 @@
 import React from 'react'
 import HelloWorld from './HelloWorld.jsx'
+import HooksHelloWorld from './HooksHelloWorld.jsx'
 
 class App extends React.Component {
     state = {
@@ -9,6 +10,7 @@ class App extends React.Component {
     render() {
         return <div>
             <HelloWorld />
+            <HooksHelloWorld />
         </div>
     }
 }
