@@ -1,10 +1,10 @@
 import React from 'react'
-import CustomerList from './CustomerList.jsx'
+import UserList from './UserList.jsx'
 
 class App extends React.Component {
     render() {
         return <div>
-            <CustomerList />
+            <UserList />
         </div>
     }
 }
