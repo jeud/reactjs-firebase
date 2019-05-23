@@ -23,11 +23,11 @@ export default function UserList() {
     }
 
     return <div>
-        <input onChange={handleChange} type="text" name="name" placeholder="Name" />
+        <input className="input" onChange={handleChange} type="text" name="name" placeholder="Name" />
         <pre>{JSON.stringify(u)}</pre>
-        <button onClick={handleAddUser}>Add User</button>
+        <button className="button is-primary" onClick={handleAddUser}>Add User</button>
 
-        <button onClick={handleSetUsers}>Get Users</button>
+        <button className="button is-danger" onClick={handleSetUsers}>Get Users</button>
         <hr />
         <table border="1">
             {users.map(each => {
