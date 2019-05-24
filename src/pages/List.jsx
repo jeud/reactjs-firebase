@@ -22,6 +22,17 @@ export default function List() {
 
     return <div>
         <h3 className="title">List</h3>
-        <pre>{JSON.stringify(users)}</pre>
+        <table className="table">
+            <tbody>
+                {users.map(each => {
+                    return <tr key={each.id}>
+                        <td>{each.id}</td>
+                        <td>{each.firstName}</td>
+                        <td><button className="button is-warning">Edit</button></td>
+                        <td><button className="button is-danger">Delete</button></td>
+                    </tr>
+                })}
+            </tbody>
+        </table>
     </div>
 }
