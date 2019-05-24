@@ -9,7 +9,14 @@ export default function List() {
 
         userCollection.get()
             .then(querySnapshot => {
-                console.log(querySnapshot)
+                const users = querySnapshot.docs.map(each => {
+                    return {
+                        id: each.id,
+                        ...each.data()
+                    }
+                })
+
+                setUsers(users)
             })
     }, [])
 
