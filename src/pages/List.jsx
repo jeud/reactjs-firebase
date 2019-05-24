@@ -9,23 +9,30 @@ export default function List() {
     // useEffect(() => {
     //     const userCollection = firebaseApp.firestore().collection('users')
 
-    //     userCollection.get()
-    //         .then(querySnapshot => {
-    //             const users = querySnapshot.docs.map(each => {
-    //                 return {
-    //                     id: each.id,
-    //                     ...each.data()
-    //                 }
-    //             })
-
-    //             setUsers(users)
+    // userCollection.get()
+    //     .then(querySnapshot => {
+    //         const users = querySnapshot.docs.map(each => {
+    //             return {
+    //                 id: each.id,
+    //                 ...each.data()
+    //             }
     //         })
+
+    //         setUsers(users)
+    //     })
     // }, [])
 
     useEffect(() => {
         const userCollection = firebaseApp.firestore().collection('users')
         const unsubscribe = userCollection.onSnapshot(querySnapshot => {
-            console.log(querySnapshot.docs)
+            const users = querySnapshot.docs.map(each => {
+                return {
+                    id: each.id,
+                    ...each.data()
+                }
+            })
+
+            setUsers(users)
         })
 
         return () => {
