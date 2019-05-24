@@ -22,5 +22,6 @@ export default function List() {
 
     return <div>
         <h3 className="title">List</h3>
+        <pre>{JSON.stringify(users)}</pre>
     </div>
 }
