@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import firebaseApp from '../firebase'
 
 export default function Create() {
     const [user, setUser] = useState({})
@@ -7,10 +8,13 @@ export default function Create() {
         const fieldName = e.target.name
 
         setUser({
+            ...user,
             [fieldName]: e.target.value
         })
+    }
 
-        console.log(user)
+    function handleUpdate() {
+        const userCollection = firebaseApp.firestore().collection('users')
     }
 
     return <div>
@@ -24,6 +28,6 @@ export default function Create() {
             <input onChange={handleChange} type="text" className="input" name="lastName" />
         </div>
 
-        <p><button className="button">Save</button></p>
+        <p><button onClick={handleUpdate} className="button">Save</button></p>
     </div>
 }
