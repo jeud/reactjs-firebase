@@ -34,8 +34,11 @@ export default function List() {
                 const { value } = result
 
                 if (value) {
-                    // delete
-                    console.log('delete', id)
+                    const userCollection = firebaseApp.firestore().collection('users')
+                    userCollection.doc(id).delete()
+                        .then(() => {
+                            console.log('deleted')
+                        })
                 }
             })
     }
