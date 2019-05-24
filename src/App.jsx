@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Subscribe } from 'unstated'
-import AuthContainer from './AuthContainer'
+import authContainer from './AuthContainer'
 import 'bulma/css/bulma.min.css'
 
 import firebaseApp from './firebase'
@@ -8,16 +7,16 @@ import Navbar from './Navbar'
 import Routes from './Routes'
 
 export default function App() {
-    const [isAuth, setAuth] = useState(false)
+    // const [isAuth, setAuth] = useState(false)
 
     useEffect(() => {
         const unsubscribe = firebaseApp.auth().onAuthStateChanged(user => {
             if (user) {
-                console.log('logged in...')
-                setAuth(true)
+                // setAuth(true)
+                authContainer.login()
             } else {
-                console.log('logout')
-                setAuth(false)
+                authContainer.logout()
+                // setAuth(false)
             }
         })
 
@@ -31,7 +30,7 @@ export default function App() {
             <div className="container">
                 <h3 className="title">App</h3>
                 <hr />
-                <Navbar isAuth={isAuth} />
+                <Navbar />
                 <hr />
                 <Routes />
             </div>

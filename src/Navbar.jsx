@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import firebaseApp from './firebase'
+import authContainer from './AuthContainer'
 
 export default function Navbar(props) {
 
@@ -13,7 +14,7 @@ export default function Navbar(props) {
         <Link to="/">Create</Link>&nbsp;|&nbsp;
         <Link to="/list">List</Link>&nbsp;|&nbsp;
 
-        {props.isAuth
+        {authContainer.state.isAuth
             && <p>
                 <button onClick={handleLogout} className="button is-danger">Logout</button>
             </p>

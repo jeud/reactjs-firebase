@@ -1,11 +1,12 @@
 import { Container } from 'unstated'
 
-export default class AuthContainer extends Container {
+class AuthContainer extends Container {
     state = {
         isAuth: false
     }
 
     login = () => {
+        console.log('aaa')
         this.setState(state => ({
             isAuth: true
         }))
@@ -17,3 +18,5 @@ export default class AuthContainer extends Container {
         }))
     }
 }
+
+export default new AuthContainer()
