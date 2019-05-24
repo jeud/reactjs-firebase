@@ -23,21 +23,23 @@ export default function List() {
     }, [])
 
     function handleDelete() {
-        // Swal.fire({
-        //     title: 'Error!',
-        //     text: 'Do you want to continue',
-        //     type: 'error',
-        //     confirmButtonText: 'Cool'
-        // })
-        //     .then(xxx => {
-        //         console.log(xxx)
-        //     })
-        alert('You clicked the button!')
+        Swal.fire({
+            title: 'Confirmation',
+            text: 'Are you sure ?',
+            type: 'info',
+            confirmButtonText: 'OK',
+            showCancelButton: true
+        })
+            .then(result => {
+                console.log(result)
+            })
     }
 
     return <div>
         <h3 className="title">List</h3>
+
         <button onClick={handleDelete}>Delete</button>
+
         <table className="table">
             <tbody>
                 {users.map(each => {
