@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     return <div>
-        <h3 className="title">Navbar</h3>
+        <Link to="/">Create</Link>&nbsp;|&nbsp;
+        <Link to="/list">List</Link>&nbsp;|&nbsp;
     </div>
 }

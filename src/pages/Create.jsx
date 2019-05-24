@@ -13,8 +13,15 @@ export default function Create() {
         })
     }
 
-    function handleUpdate() {
+    async function handleUpdate() {
         const userCollection = firebaseApp.firestore().collection('users')
+
+        try {
+            const documentRef = await userCollection.add(user)
+            console.log(documentRef.id)
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 
     return <div>
