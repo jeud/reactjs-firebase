@@ -11,8 +11,6 @@ export default function Navbar(props) {
         firebaseApp.auth().signOut()
     }
 
-    console.log('yyy', authContainer.state.isAuth)
-
     return <div>
         <Subscribe to={[authContainer]}>
             {container => {

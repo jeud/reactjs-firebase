@@ -10,7 +10,6 @@ import Login from './pages/Login'
 function ProtectRoute(props) {
     // const { isAuth = false } = props
     // const isAuth = true
-    console.log(authContainer.state.isAuth)
     const isAuth = authContainer.state.isAuth
     const { component: Component } = props
 
