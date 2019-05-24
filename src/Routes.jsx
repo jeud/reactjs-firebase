@@ -1,7 +1,12 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom'
+
+import Create from './pages/Create'
 
 export default function Routes() {
     return <div>
-        <h3 className="title">Routes</h3>
+        <Switch>
+            <Route path="/" component={Create} />
+        </Switch>
     </div>
 }
