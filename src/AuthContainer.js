@@ -6,7 +6,6 @@ class AuthContainer extends Container {
     }
 
     login = () => {
-        console.log('aaa')
         this.setState(state => ({
             isAuth: true
         }))

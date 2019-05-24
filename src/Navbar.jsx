@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Subscribe } from 'unstated'
 
 import firebaseApp from './firebase'
 import authContainer from './AuthContainer'
@@ -10,14 +11,22 @@ export default function Navbar(props) {
         firebaseApp.auth().signOut()
     }
 
-    return <div>
-        <Link to="/">Create</Link>&nbsp;|&nbsp;
-        <Link to="/list">List</Link>&nbsp;|&nbsp;
+    console.log('yyy', authContainer.state.isAuth)
 
-        {authContainer.state.isAuth
-            && <p>
-                <button onClick={handleLogout} className="button is-danger">Logout</button>
-            </p>
-        }
+    return <div>
+        <Subscribe to={[authContainer]}>
+            {container => {
+                return <div>
+                    <Link to="/">Create</Link>&nbsp;|&nbsp;
+                    <Link to="/list">List</Link>&nbsp;|&nbsp;
+
+                    {container.state.isAuth
+                        && <p>
+                            <button onClick={handleLogout} className="button is-danger">Logout</button>
+                        </p>
+                    }
+                </div>
+            }}
+        </Subscribe>
     </div>
 }
