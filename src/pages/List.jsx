@@ -7,22 +7,22 @@ export default function List() {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        // const userCollection = firebaseApp.firestore().collection('users')
+        const userCollection = firebaseApp.firestore().collection('users')
 
-        // userCollection.get()
-        //     .then(querySnapshot => {
-        //         const users = querySnapshot.docs.map(each => {
-        //             return {
-        //                 id: each.id,
-        //                 ...each.data()
-        //             }
-        //         })
+        userCollection.get()
+            .then(querySnapshot => {
+                const users = querySnapshot.docs.map(each => {
+                    return {
+                        id: each.id,
+                        ...each.data()
+                    }
+                })
 
-        //         setUsers(users)
-        //     })
+                setUsers(users)
+            })
     }, [])
 
-    function handleDelete() {
+    function handleDelete(id) {
         Swal.fire({
             title: 'Confirmation',
             text: 'Are you sure ?',
@@ -31,14 +31,19 @@ export default function List() {
             showCancelButton: true
         })
             .then(result => {
-                console.log(result)
+                const { value } = result
+
+                if (value) {
+                    // delete
+                    console.log('delete', id)
+                }
             })
     }
 
     return <div>
         <h3 className="title">List</h3>
 
-        <button onClick={handleDelete}>Delete</button>
+        {/* <button onClick={handleDelete}>Delete</button> */}
 
         <table className="table">
             <tbody>
@@ -47,7 +52,7 @@ export default function List() {
                         <td>{each.id}</td>
                         <td>{each.firstName}</td>
                         <td><button className="button is-warning">Edit</button></td>
-                        <td><button onClick={handleDelete} className="button is-danger">Delete</button></td>
+                        <td><button onClick={() => handleDelete(each.id)} className="button is-danger">Delete</button></td>
                     </tr>
                 })}
             </tbody>
