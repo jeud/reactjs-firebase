@@ -6,20 +6,31 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 export default function List() {
     const [users, setUsers] = useState([])
 
+    // useEffect(() => {
+    //     const userCollection = firebaseApp.firestore().collection('users')
+
+    //     userCollection.get()
+    //         .then(querySnapshot => {
+    //             const users = querySnapshot.docs.map(each => {
+    //                 return {
+    //                     id: each.id,
+    //                     ...each.data()
+    //                 }
+    //             })
+
+    //             setUsers(users)
+    //         })
+    // }, [])
+
     useEffect(() => {
         const userCollection = firebaseApp.firestore().collection('users')
+        const unsubscribe = userCollection.onSnapshot(querySnapshot => {
+            console.log(querySnapshot.docs)
+        })
 
-        userCollection.get()
-            .then(querySnapshot => {
-                const users = querySnapshot.docs.map(each => {
-                    return {
-                        id: each.id,
-                        ...each.data()
-                    }
-                })
-
-                setUsers(users)
-            })
+        return () => {
+            unsubscribe()
+        }
     }, [])
 
     function handleDelete(id) {
